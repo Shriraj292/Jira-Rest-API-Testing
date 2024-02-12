@@ -631,6 +631,66 @@
 		{
 			"key": "token",
 			"value": ""
+		},
+		{
+			"key": "projectName",
+			"value": ""
+		},
+		{
+			"key": "projectID",
+			"value": ""
+		},
+		{
+			"key": "projectKey",
+			"value": ""
+		},
+		{
+			"key": "issueIdStory",
+			"value": ""
+		},
+		{
+			"key": "issueIdTask",
+			"value": ""
+		},
+		{
+			"key": "issueIdBug",
+			"value": ""
+		},
+		{
+			"key": "issueIdEpic",
+			"value": ""
+		},
+		{
+			"key": "issueIdSubtask",
+			"value": ""
+		},
+		{
+			"key": "issueId",
+			"value": ""
+		},
+		{
+			"key": "issueKey",
+			"value": ""
+		},
+		{
+			"key": "current_issue_status",
+			"value": ""
+		},
+		{
+			"key": "current_issue_reporterId",
+			"value": ""
+		},
+		{
+			"key": "transition_status_To Do_id",
+			"value": ""
+		},
+		{
+			"key": "transition_status_In Progress_id",
+			"value": ""
+		},
+		{
+			"key": "transition_status_Done_id",
+			"value": ""
 		}
 	]
 }
