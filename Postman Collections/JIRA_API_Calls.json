@@ -644,7 +644,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "7ba89d72-8dcb-44cb-b662-c3465f3783b4",
+				"id": "ed0a876a-5199-48ea-810a-6b43fef28dde",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -654,7 +654,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "8e1c0c5f-57c3-4fb7-96d2-37db4be6fb4d",
+				"id": "8c31cd50-7719-4a40-b202-5613a94b2d1c",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -674,10 +674,6 @@
 		},
 		{
 			"key": "token",
-			"value": ""
-		},
-		{
-			"key": "projectName",
 			"value": ""
 		}
 	]
