@@ -643,7 +643,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "c7be90b1-bb15-4d95-84a1-94ff0b94c3e5",
+				"id": "42053bed-0b48-43c8-b4ea-8684db680bee",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -653,7 +653,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "bb6c96f4-4f23-4d49-b5a7-e5f526cc8105",
+				"id": "5ed9fcdc-e566-42f3-b4ae-739507b27689",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -664,15 +664,19 @@
 	"variable": [
 		{
 			"key": "baseurl",
-			"value": ""
+			"value": "https://swe-shrirajghorpade.atlassian.net"
 		},
 		{
 			"key": "username",
-			"value": "",
+			"value": "shriraj.ghorpade29@gmail.com",
 			"type": "string"
 		},
 		{
 			"key": "token",
+			"value": "ATATT3xFfGF0mWlCEpfajcXqy4gg36k1T1oRnAAJjjrMljf__F3XK2tcLSGfiRRKHJ15-xiQc45AMtrtVtwbn_Pv67y-gC6zpIVgD9y0uYR9hllB6ROR1GsK-rEZZLxLmgG4KcEfSqYNU6znQIysfFjHKqDeuZewLcgta4OuGBYDtDuzQCB4Cj4=47CB23C2"
+		},
+		{
+			"key": "projectName",
 			"value": ""
 		}
 	]
