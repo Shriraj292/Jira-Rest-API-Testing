@@ -642,20 +642,20 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "86e351ec-2b48-4b1b-aeeb-0527be42fa32",
+				"id": "2b074b51-9ea1-466c-93e8-00927d9a9088",
 				"type": "text/javascript",
 				"exec": [
 					"var projectName = \"Demo API Testing Project\";",
 					"var projectKey = \"DATP\";",
-					"pm.variables.set(\"projectName\", projectName);",
-					"pm.variables.set(\"projectKey\", projectKey);"
+					"pm.collectionVariables.set(\"projectName\", projectName);",
+					"pm.collectionVariables.set(\"projectKey\", projectKey);"
 				]
 			}
 		},
 		{
 			"listen": "test",
 			"script": {
-				"id": "b441578a-ebfb-481e-8470-51beb9be33f1",
+				"id": "357b98b0-dfd0-49d9-b7bc-e5576523337a",
 				"type": "text/javascript",
 				"exec": [
 					""
