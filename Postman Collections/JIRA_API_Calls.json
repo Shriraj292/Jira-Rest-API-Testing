@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "0475aabd-5e0d-45f0-8052-672d8705fb54",
 		"name": "JIRA Rest API Testing",
+		"description": "StartFragment\n\n# API Testing Project: JIRA Rest API\n\n## Introduction\n\nThis documentation provides a detailed overview of an API testing project created using Postman for the JIRA Rest API. The project covers various aspects of JIRA operations, including retrieving project details, managing issue types, creating and managing issues, and performing status transitions.\n\n## Project Overview\n\n### Tools Used\n\n- Postman\n- JIRA Rest API\n    \n\n### API Documentation\n\n[JIRA Rest API Documentation](https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/#about)\n\n## Test Scenarios\n\n### 1\\. Getting JIRA Project Details\n\n- **Request Type:** GET\n- **Endpoint:** `/rest/api/3/project/{projectIdOrKey}`\n- **Description:** Retrieves details about a JIRA project.\n- **Authorization:** Basic Auth\n    \n\n### 2\\. Getting Permitted Issue Types for a Project\n\n- **Request Type:** GET\n- **Endpoint:** `/rest/api/3/issue/createmeta`\n- **Description:** Retrieves metadata for creating issues, including the permitted issue types for a project.\n- **Authorization:** Basic Auth\n    \n\n### 3\\. Creating an Issue (Story)\n\n- **Request Type:** POST\n- **Endpoint:** `/rest/api/3/issue`\n- **Description:** Creates a new issue (story) in JIRA.\n- **Authorization:** Basic Auth\n- **Request Body:** JSON payload with issue details.\n    \n\n### 4\\. Getting the Created Issue\n\n- **Request Type:** GET\n- **Endpoint:** `/rest/api/3/issue/{issueIdOrKey}`\n- **Description:** Retrieves details about a specific issue in JIRA.\n- **Authorization:** Basic Auth\n    \n\n### 5\\. Getting Issue Transition Statuses\n\n- **Request Type:** GET\n- **Endpoint:** `/rest/api/3/issue/{issueIdOrKey}/transitions`\n- **Description:** Retrieves the list of valid transitions for an issue.\n- **Authorization:** Basic Auth\n    \n\n### 6\\. Assigning the Issue to Someone (Yourself)\n\n- **Request Type:** PUT\n- **Endpoint:** `/rest/api/3/issue/{issueIdOrKey}/assignee`\n- **Description:** Assigns the issue to a user (e.g., yourself).\n- **Authorization:** Basic Auth\n- **Request Body:** JSON payload with assignee details.\n    \n\n### 7\\. Editing the Issue\n\n- **Request Type:** PUT\n- **Endpoint:** `/rest/api/3/issue/{issueIdOrKey}`\n- **Description:** Edits the details of an existing issue.\n- **Authorization:** Basic Auth\n- **Request Body:** JSON payload with updated issue details.\n    \n\n### 8\\. Changing the Status of the Issue\n\n- **Request Type:** POST\n- **Endpoint:** `/rest/api/3/issue/{issueIdOrKey}/transitions`\n- **Description:** Initiates a transition to change the status of the issue.\n- **Authorization:** Basic Auth\n- **Request Body:** JSON payload with transition details.\n    \n\n### 9\\. Deleting the Issue\n\n- **Request Type:** DELETE\n- **Endpoint:** `/rest/api/3/issue/{issueIdOrKey}`\n- **Description:** Deletes a specific issue in JIRA.\n- **Authorization:** Basic Auth\n    \n\n## Conclusion\n\nThis API testing project covers a comprehensive set of scenarios for interacting with the JIRA Rest API. It includes various HTTP methods such as GET, POST, PUT, and DELETE, ensuring a thorough validation of the API functionality.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -643,7 +644,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "1601fb09-77ee-40da-b1da-1786ef644292",
+				"id": "f5193b3e-35ec-44ac-9a12-53fe5beb9251",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -653,7 +654,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "69f84006-a610-419f-97d3-73ff09c3e4d8",
+				"id": "28010eff-ed6c-4b0b-83e0-a3c793f8d0d5",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -664,16 +665,16 @@
 	"variable": [
 		{
 			"key": "baseurl",
-			"value": "https://swe-shrirajghorpade.atlassian.net"
+			"value": ""
 		},
 		{
 			"key": "username",
-			"value": "shriraj.ghorpade29@gmail.com",
+			"value": "",
 			"type": "string"
 		},
 		{
 			"key": "token",
-			"value": "ATATT3xFfGF0cEtvyM2VwOX6l2UvzsrYiV_F89W32OSZkV6bP7P-mJsN-u-LkIlies2hiKz4CGGJ8SbJglCZ9tz1lIa8QqYnjyKRKGc1Byzo2mXf48yFNs57FPb_3egKeXDmzdPTR2z2dCTIKzP_3aFwO2AG5sr3yHdVmjkn_pk4YKO9ir44kuQ=A295EA64"
+			"value": ""
 		}
 	]
 }
