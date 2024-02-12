@@ -519,6 +519,25 @@
 		},
 		{
 			"name": "Edit Issue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "00fe1779-46e3-4510-8955-3fe778b2bc4a",
+						"exec": [
+							"pm.test(\"Successful PUT request - Issue successfully edited\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"    pm.response.to.have.status(\"No Content\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1500ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "84779d2a-bf9f-4ab7-b210-c0b78094f703",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -597,7 +616,7 @@
 	"auth": {
 		"type": "basic",
 		"basic": {
-			"username": "shriraj.ghorpade29@gmail.com",
+			"username": "{{username}}",
 			"password": "{{token}}"
 		}
 	},
@@ -605,7 +624,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "b77f555d-5236-4a8d-a892-3abe3cdd3362",
+				"id": "c7be90b1-bb15-4d95-84a1-94ff0b94c3e5",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -615,7 +634,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "6cb98c3b-0261-4e0b-9661-dd9f1b54e8a2",
+				"id": "bb6c96f4-4f23-4d49-b5a7-e5f526cc8105",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -626,16 +645,16 @@
 	"variable": [
 		{
 			"key": "baseurl",
-			"value": "https://swe-shrirajghorpade.atlassian.net"
+			"value": ""
 		},
 		{
 			"key": "username",
-			"value": "shriraj.ghorpade29@gmail.com",
+			"value": "",
 			"type": "string"
 		},
 		{
 			"key": "token",
-			"value": "ATATT3xFfGF0mWlCEpfajcXqy4gg36k1T1oRnAAJjjrMljf__F3XK2tcLSGfiRRKHJ15-xiQc45AMtrtVtwbn_Pv67y-gC6zpIVgD9y0uYR9hllB6ROR1GsK-rEZZLxLmgG4KcEfSqYNU6znQIysfFjHKqDeuZewLcgta4OuGBYDtDuzQCB4Cj4=47CB23C2"
+			"value": ""
 		}
 	]
 }
