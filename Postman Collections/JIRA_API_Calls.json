@@ -518,6 +518,28 @@
 			"response": []
 		},
 		{
+			"name": "Edit Issue",
+			"id": "84779d2a-bf9f-4ab7-b210-c0b78094f703",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"assignee\": {\r\n            \"id\": \"{{current_issue_reporterId}}\"\r\n        },\r\n        \"description\": {\r\n            \"content\": [\r\n                {\r\n                    \"content\": [\r\n                        {\r\n                            \"text\": \"Edit 1: The description is changed.\",\r\n                            \"type\": \"text\"\r\n                        }\r\n                    ],\r\n                    \"type\": \"paragraph\"\r\n                }\r\n            ],\r\n            \"type\": \"doc\",\r\n            \"version\": 1\r\n        }\r\n    },\r\n    \"update\": {\r\n        \"labels\": [\r\n            {\r\n                \"add\": \"CR001\"\r\n            }\r\n        ],\r\n        \"summary\": [\r\n            {\r\n                \"set\": \"Edit 1: Issue summary is changed.\"\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl}}/rest/api/3/issue/{{issueId}}"
+			},
+			"response": []
+		},
+		{
 			"name": "Change Issue Status",
 			"event": [
 				{
@@ -547,7 +569,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"transition\": {\r\n    \"id\": \"{{transition_status_In Progress_id}}\"\r\n  }\r\n}",
+					"raw": "{\r\n    \"transition\": {\r\n    \"id\": \"{{transition_status_Done_id}}\"\r\n  }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -555,28 +577,6 @@
 					}
 				},
 				"url": "{{baseurl}}/rest/api/3/issue/{{issueId}}/transitions"
-			},
-			"response": []
-		},
-		{
-			"name": "Edit Issue",
-			"id": "84779d2a-bf9f-4ab7-b210-c0b78094f703",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"fields\": {\r\n        \"assignee\": {\r\n            \"id\": \"{{current_issue_reporterId}}\"\r\n        },\r\n        \"description\": {\r\n            \"content\": [\r\n                {\r\n                    \"content\": [\r\n                        {\r\n                            \"text\": \"Edit 1: The description is changed.\",\r\n                            \"type\": \"text\"\r\n                        }\r\n                    ],\r\n                    \"type\": \"paragraph\"\r\n                }\r\n            ],\r\n            \"type\": \"doc\",\r\n            \"version\": 1\r\n        }\r\n    },\r\n    \"update\": {\r\n        \"labels\": [\r\n            {\r\n                \"add\": \"CR001\"\r\n            }\r\n        ],\r\n        \"summary\": [\r\n            {\r\n                \"set\": \"Edit 1: Issue summary is changed.\"\r\n            }\r\n        ]\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{baseurl}}/rest/api/3/issue/{{issueId}}"
 			},
 			"response": []
 		},
@@ -605,7 +605,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "c0a2c7c3-7493-4ebe-84b0-112df1a13151",
+				"id": "b77f555d-5236-4a8d-a892-3abe3cdd3362",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -615,7 +615,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "2b368ab1-0fea-4ed7-bb00-1d51082479a4",
+				"id": "6cb98c3b-0261-4e0b-9661-dd9f1b54e8a2",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -629,68 +629,13 @@
 			"value": "https://swe-shrirajghorpade.atlassian.net"
 		},
 		{
+			"key": "username",
+			"value": "shriraj.ghorpade29@gmail.com",
+			"type": "string"
+		},
+		{
 			"key": "token",
 			"value": "ATATT3xFfGF0mWlCEpfajcXqy4gg36k1T1oRnAAJjjrMljf__F3XK2tcLSGfiRRKHJ15-xiQc45AMtrtVtwbn_Pv67y-gC6zpIVgD9y0uYR9hllB6ROR1GsK-rEZZLxLmgG4KcEfSqYNU6znQIysfFjHKqDeuZewLcgta4OuGBYDtDuzQCB4Cj4=47CB23C2"
-		},
-		{
-			"key": "projectName",
-			"value": ""
-		},
-		{
-			"key": "projectID",
-			"value": ""
-		},
-		{
-			"key": "projectKey",
-			"value": ""
-		},
-		{
-			"key": "issueIdStory",
-			"value": ""
-		},
-		{
-			"key": "issueIdTask",
-			"value": ""
-		},
-		{
-			"key": "issueIdBug",
-			"value": ""
-		},
-		{
-			"key": "issueIdEpic",
-			"value": ""
-		},
-		{
-			"key": "issueIdSubtask",
-			"value": ""
-		},
-		{
-			"key": "issueId",
-			"value": ""
-		},
-		{
-			"key": "issueKey",
-			"value": ""
-		},
-		{
-			"key": "current_issue_status",
-			"value": ""
-		},
-		{
-			"key": "current_issue_reporterId",
-			"value": ""
-		},
-		{
-			"key": "transition_status_To Do_id",
-			"value": ""
-		},
-		{
-			"key": "transition_status_In Progress_id",
-			"value": ""
-		},
-		{
-			"key": "transition_status_Done_id",
-			"value": ""
 		}
 	]
 }
