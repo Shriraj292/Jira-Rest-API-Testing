@@ -172,8 +172,9 @@
 						"id": "f55593ce-51e3-4ff4-9ce1-7c6ea9c66d5a",
 						"exec": [
 							"var projectName = \"Demo API Testing Project\";\r",
-							"pm.collectionVariables.set(\"projectName\", projectName);\r",
-							""
+							"var projectKey = \"DATP\";\r",
+							"pm.variables.set(\"projectName\", projectName);\r",
+							"pm.variables.set(\"projectKey\", projectKey);"
 						],
 						"type": "text/javascript"
 					}
