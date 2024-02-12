@@ -643,7 +643,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "42053bed-0b48-43c8-b4ea-8684db680bee",
+				"id": "1601fb09-77ee-40da-b1da-1786ef644292",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -653,7 +653,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "5ed9fcdc-e566-42f3-b4ae-739507b27689",
+				"id": "69f84006-a610-419f-97d3-73ff09c3e4d8",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -673,11 +673,7 @@
 		},
 		{
 			"key": "token",
-			"value": "ATATT3xFfGF0mWlCEpfajcXqy4gg36k1T1oRnAAJjjrMljf__F3XK2tcLSGfiRRKHJ15-xiQc45AMtrtVtwbn_Pv67y-gC6zpIVgD9y0uYR9hllB6ROR1GsK-rEZZLxLmgG4KcEfSqYNU6znQIysfFjHKqDeuZewLcgta4OuGBYDtDuzQCB4Cj4=47CB23C2"
-		},
-		{
-			"key": "projectName",
-			"value": ""
+			"value": "ATATT3xFfGF0cEtvyM2VwOX6l2UvzsrYiV_F89W32OSZkV6bP7P-mJsN-u-LkIlies2hiKz4CGGJ8SbJglCZ9tz1lIa8QqYnjyKRKGc1Byzo2mXf48yFNs57FPb_3egKeXDmzdPTR2z2dCTIKzP_3aFwO2AG5sr3yHdVmjkn_pk4YKO9ir44kuQ=A295EA64"
 		}
 	]
 }
