@@ -601,6 +601,25 @@
 		},
 		{
 			"name": "Delete Issue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3745b656-8569-40d6-b114-7e6691789085",
+						"exec": [
+							"pm.test(\"Successful DELETE request - Issue deleted successfully\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"    pm.response.to.have.status(\"No Content\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "87dc469b-7e9f-4d77-a92d-9c6dce26988d",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
