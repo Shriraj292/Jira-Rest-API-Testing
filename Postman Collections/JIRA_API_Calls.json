@@ -605,7 +605,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "9c980c1c-5bd8-4dee-95ea-0d5676bc2917",
+				"id": "c0a2c7c3-7493-4ebe-84b0-112df1a13151",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -615,7 +615,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "6d4a8df3-17f6-4425-b81e-9126cfeeef8d",
+				"id": "2b368ab1-0fea-4ed7-bb00-1d51082479a4",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -626,11 +626,11 @@
 	"variable": [
 		{
 			"key": "baseurl",
-			"value": ""
+			"value": "https://swe-shrirajghorpade.atlassian.net"
 		},
 		{
 			"key": "token",
-			"value": ""
+			"value": "ATATT3xFfGF0mWlCEpfajcXqy4gg36k1T1oRnAAJjjrMljf__F3XK2tcLSGfiRRKHJ15-xiQc45AMtrtVtwbn_Pv67y-gC6zpIVgD9y0uYR9hllB6ROR1GsK-rEZZLxLmgG4KcEfSqYNU6znQIysfFjHKqDeuZewLcgta4OuGBYDtDuzQCB4Cj4=47CB23C2"
 		},
 		{
 			"key": "projectName",
