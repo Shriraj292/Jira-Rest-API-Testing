@@ -1,0 +1,636 @@
+{
+	"info": {
+		"_postman_id": "0475aabd-5e0d-45f0-8052-672d8705fb54",
+		"name": "JIRA Rest API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Project Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "49d69e83-54df-4c95-a1b4-ac344c2a8968",
+						"exec": [
+							"var responseData = pm.response.json();",
+							"var reqProjectId = 0;",
+							"",
+							"for(var i = 0; i < responseData.values.length; i++){",
+							"    if(responseData.values[i].name == pm.collectionVariables.get(\"projectName\")){",
+							"        pm.collectionVariables.set(\"projectID\", responseData.values[i].id);",
+							"        pm.collectionVariables.set(\"projectKey\", responseData.values[i].key);",
+							"        reqProjectId = i;",
+							"    }    ",
+							"}",
+							"",
+							"pm.test(\"Status code is 200 OK\", ()=>{",
+							"    pm.response.to.have.status(200);",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 1000ms\", ()=>{",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(1000);",
+							"});",
+							"",
+							"pm.test(\"Response have required fields\", ()=>{",
+							"    pm.expect(responseData.values[reqProjectId]).to.have.property(\"id\");",
+							"    pm.expect(responseData.values[reqProjectId]).to.have.property(\"key\");",
+							"    pm.expect(responseData.values[reqProjectId]).to.have.property(\"name\");",
+							"});",
+							"",
+							"pm.test(\"Required fields have valid values\", ()=>{",
+							"    pm.expect(responseData.values[reqProjectId].key).to.eql(\"DATP\");",
+							"    pm.expect(responseData.values[reqProjectId].name).to.eql(pm.collectionVariables.get(\"projectName\"));",
+							"});",
+							"",
+							"var responseSchema = {",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",",
+							"  \"type\": \"object\",",
+							"  \"properties\": {",
+							"    \"self\": {",
+							"      \"type\": \"string\"",
+							"    },",
+							"    \"maxResults\": {",
+							"      \"type\": \"integer\"",
+							"    },",
+							"    \"startAt\": {",
+							"      \"type\": \"integer\"",
+							"    },",
+							"    \"total\": {",
+							"      \"type\": \"integer\"",
+							"    },",
+							"    \"isLast\": {",
+							"      \"type\": \"boolean\"",
+							"    },",
+							"    \"values\": {",
+							"      \"type\": \"array\",",
+							"      \"items\": [",
+							"        {",
+							"          \"type\": \"object\",",
+							"          \"properties\": {",
+							"            \"expand\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"self\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"id\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"key\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"name\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"avatarUrls\": {",
+							"              \"type\": \"object\",",
+							"              \"properties\": {",
+							"                \"48x48\": {",
+							"                  \"type\": \"string\"",
+							"                },",
+							"                \"24x24\": {",
+							"                  \"type\": \"string\"",
+							"                },",
+							"                \"16x16\": {",
+							"                  \"type\": \"string\"",
+							"                },",
+							"                \"32x32\": {",
+							"                  \"type\": \"string\"",
+							"                }",
+							"              },",
+							"              \"required\": [",
+							"                \"48x48\",",
+							"                \"24x24\",",
+							"                \"16x16\",",
+							"                \"32x32\"",
+							"              ]",
+							"            },",
+							"            \"projectTypeKey\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"simplified\": {",
+							"              \"type\": \"boolean\"",
+							"            },",
+							"            \"style\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"isPrivate\": {",
+							"              \"type\": \"boolean\"",
+							"            },",
+							"            \"properties\": {",
+							"              \"type\": \"object\"",
+							"            },",
+							"            \"entityId\": {",
+							"              \"type\": \"string\"",
+							"            },",
+							"            \"uuid\": {",
+							"              \"type\": \"string\"",
+							"            }",
+							"          },",
+							"          \"required\": [",
+							"            \"expand\",",
+							"            \"self\",",
+							"            \"id\",",
+							"            \"key\",",
+							"            \"name\",",
+							"            \"avatarUrls\",",
+							"            \"projectTypeKey\",",
+							"            \"simplified\",",
+							"            \"style\",",
+							"            \"isPrivate\",",
+							"            \"properties\",",
+							"            \"entityId\",",
+							"            \"uuid\"",
+							"          ]",
+							"        }",
+							"      ]",
+							"    }",
+							"  },",
+							"  \"required\": [",
+							"    \"self\",",
+							"    \"maxResults\",",
+							"    \"startAt\",",
+							"    \"total\",",
+							"    \"isLast\",",
+							"    \"values\"",
+							"  ]",
+							"};",
+							"",
+							"pm.test('Schema is valid', function () {",
+							"    pm.expect(tv4.validate(responseData, responseSchema)).to.be.true;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f55593ce-51e3-4ff4-9ce1-7c6ea9c66d5a",
+						"exec": [
+							"var projectName = \"Demo API Testing Project\";\r",
+							"pm.collectionVariables.set(\"projectName\", projectName);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "1adcded3-0640-492b-b9f0-6d9b642ad9a9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl}}/rest/api/3/project/search"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Issue Types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "17d13c25-731c-4ec3-b1ca-280dbe665163",
+						"exec": [
+							"var data = pm.response.json();\r",
+							"for (var i = 0; i < data.length; i++) { \r",
+							"     switch(data[i].name){\r",
+							"        case \"Story\":{\r",
+							"            pm.collectionVariables.set(\"issueIdStory\", data[i].id);\r",
+							"            break;\r",
+							"        }\r",
+							"\r",
+							"        case \"Task\":{\r",
+							"            pm.collectionVariables.set(\"issueIdTask\", data[i].id);\r",
+							"            break;\r",
+							"        }\r",
+							"\r",
+							"        case \"Bug\":{\r",
+							"            pm.collectionVariables.set(\"issueIdBug\", data[i].id);\r",
+							"            break;\r",
+							"        }\r",
+							"\r",
+							"        case \"Subtask\":{\r",
+							"            pm.collectionVariables.set(\"issueIdSubtask\", data[i].id);\r",
+							"            break;\r",
+							"        }\r",
+							"\r",
+							"        case \"Epic\":{\r",
+							"            pm.collectionVariables.set(\"issueIdEpic\", data[i].id);\r",
+							"            break;\r",
+							"        }\r",
+							"        \r",
+							"     }\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Status code is 200 OK\", ()=>{\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains required properties and project id\", ()=>{\r",
+							"    for(var i = 0; i < data.length; i++){\r",
+							"        pm.expect(data[i]).to.have.property(\"id\");\r",
+							"        pm.expect(data[i]).to.have.property(\"description\");\r",
+							"        pm.expect(data[i]).to.have.property(\"name\");\r",
+							"        pm.expect(data[i].scope.project).to.have.property('id');\r",
+							"        pm.expect(data[i].scope.project.id).to.be.eql(pm.collectionVariables.get(\"projectID\"));\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "d44702d3-e20d-490c-8e92-f8ca5d48a175",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/rest/api/3/issuetype/project?projectId={{projectID}}",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"3",
+						"issuetype",
+						"project"
+					],
+					"query": [
+						{
+							"key": "projectId",
+							"value": "{{projectID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Issue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8a7d1036-5f15-456a-8f3d-8c832c1b8eec",
+						"exec": [
+							"var responseData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 201 Created\", ()=>{\r",
+							"    pm.response.to.have.status(201);\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 1500ms\", ()=>{\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(1500);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response contains required fields\", ()=>{\r",
+							"    pm.expect(responseData).to.have.property(\"id\");\r",
+							"    pm.expect(responseData).to.have.property(\"key\");\r",
+							"})\r",
+							"\r",
+							"var responseSchema = {\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"key\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"self\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"key\",\r",
+							"    \"self\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"pm.test(\"Schema is vaild\", ()=>{\r",
+							"    pm.expect(tv4.validate(responseData, responseSchema)).to.be.true;\r",
+							"})\r",
+							"\r",
+							"//set issue id and key of created issue\r",
+							"pm.collectionVariables.set(\"issueId\", responseData.id);\r",
+							"pm.collectionVariables.set(\"issueKey\", responseData.key);\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "62a8ff1c-cbe7-4ccb-8ba3-3adfb5631e74",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"description\": {\r\n            \"content\": [\r\n                {\r\n                    \"content\": [\r\n                        {\r\n                            \"text\": \"{{$randomLoremSentences}}\",\r\n                            \"type\": \"text\"\r\n                        }\r\n                    ],\r\n                    \"type\": \"paragraph\"\r\n                }\r\n            ],\r\n            \"type\": \"doc\",\r\n            \"version\": 1\r\n        },\r\n        \"issuetype\": {\r\n            \"id\": \"{{issueIdStory}}\"\r\n        },\r\n        \"project\": {\r\n            \"id\": \"{{projectID}}\"\r\n        },\r\n        \"summary\": \"Sample Story {{$randomInt}}\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl}}/rest/api/3/issue"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Issue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "907674cb-871e-4cc1-9ae0-2b04b877ee90",
+						"exec": [
+							"var responseData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Correct issue is retrieved\", ()=>{\r",
+							"    pm.expect(responseData.id).to.be.eql(pm.collectionVariables.get(\"issueId\"));\r",
+							"    pm.expect(responseData.key).to.be.eql(pm.collectionVariables.get(\"issueKey\"));\r",
+							"})\r",
+							"\r",
+							"pm.collectionVariables.set(\"current_issue_status\", responseData.fields.status.name);\r",
+							"pm.collectionVariables.set(\"current_issue_reporterId\", responseData.fields.reporter.accountId);\r",
+							"\r",
+							"pm.test(\"Status code is 200 OK\", ()=>{\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", ()=>{\r",
+							"    pm.expect(pm.response.responseTime).to.be.lessThan(1000);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "8c1c048f-6479-4d42-9a2a-ccdff6b7c86f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl}}/rest/api/3/issue/{{issueId}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Issue Transitions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a88e4b73-e0d4-463a-bb91-04df70af592a",
+						"exec": [
+							"var responseData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Status code is 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"})\r",
+							"\r",
+							"for(var i = 0; i < responseData.transitions.length; i++){\r",
+							"    \r",
+							"    pm.test(\"Transition entry \" + (i + 1) + \" have required fields\", ()=>{\r",
+							"        pm.expect(responseData.transitions[i]).to.have.property(\"id\");\r",
+							"        pm.expect(responseData.transitions[i]).to.have.property(\"name\");\r",
+							"    \r",
+							"        pm.expect(responseData.transitions[i].to).to.have.property(\"id\");\r",
+							"        pm.expect(responseData.transitions[i].to).to.have.property(\"name\");\r",
+							"    })\r",
+							"\r",
+							"    pm.test(\"Transition entry \" + (i + 1) + \" - Required fields have valid values\",\r",
+							"    ()=>{\r",
+							"        j = i + 1;\r",
+							"        switch(j){\r",
+							"            case 1:{\r",
+							"                pm.expect(responseData.transitions[i].id).to.be.eql(\"11\");\r",
+							"                pm.expect(responseData.transitions[i].name).to.be.eql(\"To Do\");\r",
+							"                break;\r",
+							"            }\r",
+							"\r",
+							"            case 2:{\r",
+							"                pm.expect(responseData.transitions[i].id).to.be.eql(\"21\");\r",
+							"                pm.expect(responseData.transitions[i].name).to.be.eql(\"In Progress\");\r",
+							"                break;\r",
+							"            }\r",
+							"\r",
+							"            case 3:{\r",
+							"                pm.expect(responseData.transitions[i].id).to.be.eql(\"31\");\r",
+							"                pm.expect(responseData.transitions[i].name).to.be.eql(\"Done\");\r",
+							"                break;\r",
+							"            }\r",
+							"        }\r",
+							"    })\r",
+							"\r",
+							"    pm.collectionVariables.set(\"transition_status_\" + responseData.transitions[i].name + \"_id\", responseData.transitions[i].id);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "bf927358-a754-499d-9fc0-b51fd484dee8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseurl}}/rest/api/3/issue/{{issueId}}/transitions"
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Issue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a04314d2-6acf-4b95-9269-d4c9313c8928",
+						"exec": [
+							"pm.test(\"Successful PUT request - Issue assigned successfully\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"    pm.response.to.have.status(\"No Content\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "2dde1a04-f7b1-42b8-a5dd-646c90e1e4b5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountId\": \"{{current_issue_reporterId}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl}}/rest/api/3/issue/{{issueId}}/assignee"
+			},
+			"response": []
+		},
+		{
+			"name": "Change Issue Status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "79e67abd-9121-4419-b389-ed7848dfb8c5",
+						"exec": [
+							"pm.test(\"Successful POST request - Issue status changed successfully\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"    pm.response.to.have.status(\"No Content\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "85e69b2c-0c5c-4b02-9d82-3ca7d3685553",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"transition\": {\r\n    \"id\": \"{{transition_status_In Progress_id}}\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl}}/rest/api/3/issue/{{issueId}}/transitions"
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Issue",
+			"id": "84779d2a-bf9f-4ab7-b210-c0b78094f703",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"assignee\": {\r\n            \"id\": \"{{current_issue_reporterId}}\"\r\n        },\r\n        \"description\": {\r\n            \"content\": [\r\n                {\r\n                    \"content\": [\r\n                        {\r\n                            \"text\": \"Edit 1: The description is changed.\",\r\n                            \"type\": \"text\"\r\n                        }\r\n                    ],\r\n                    \"type\": \"paragraph\"\r\n                }\r\n            ],\r\n            \"type\": \"doc\",\r\n            \"version\": 1\r\n        }\r\n    },\r\n    \"update\": {\r\n        \"labels\": [\r\n            {\r\n                \"add\": \"CR001\"\r\n            }\r\n        ],\r\n        \"summary\": [\r\n            {\r\n                \"set\": \"Edit 1: Issue summary is changed.\"\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseurl}}/rest/api/3/issue/{{issueId}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Issue",
+			"id": "87dc469b-7e9f-4d77-a92d-9c6dce26988d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{baseurl}}/rest/api/3/issue/{{issueId}}"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"username": "shriraj.ghorpade29@gmail.com",
+			"password": "{{token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9c980c1c-5bd8-4dee-95ea-0d5676bc2917",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6d4a8df3-17f6-4425-b81e-9126cfeeef8d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
